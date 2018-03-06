@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Transform Vue Deextend should not remove other module 1`] = `
+"
+import Vue from 'some-other-module';
+
+export default Vue.extend({
+  data() {
+    return { message: 'Hello!' };
+  }
+});"
+`;
+
+exports[`Transform Vue Deextend should remove Vue.extend 1`] = `
+"
+
+export default {
+  data() {
+    return { message: 'Hello!' };
+  }
+};"
+`;
