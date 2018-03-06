@@ -1,0 +1,64 @@
+{
+  "name": "babel-plugin-transform-vue-deextend",
+  "version": "0.0.0",
+  "author": "katashin",
+  "private": true,
+  "description": "A project template for a Node.js library using TypeScript",
+  "keywords": [
+    "template",
+    "TypeScript",
+    "Node.js"
+  ],
+  "license": "MIT",
+  "main": "lib/index.js",
+  "typings": "lib/index.d.ts",
+  "files": [
+    "lib"
+  ],
+  "homepage": "https://github.com/ktsn/babel-plugin-transform-vue-deextend",
+  "bugs": "https://github.com/ktsn/babel-plugin-transform-vue-deextend/issues",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ktsn/babel-plugin-transform-vue-deextend.git"
+  },
+  "scripts": {
+    "prepublishOnly": "npm run clean && npm run test && npm run build",
+    "clean": "rm -rf lib",
+    "build": "tsc -p src",
+    "dev": "jest --watch",
+    "lint": "tslint -p . && prettier --list-different \"{src,scripts,test}/**/*.{js,ts}\"",
+    "format": "prettier --write \"{src,scripts,test}/**/*.{js,ts}\"",
+    "test": "npm run lint && npm run test:unit",
+    "test:unit": "jest",
+    "snapshot": "jest --updateSnapshot"
+  },
+  "jest": {
+    "transform": {
+      "^.+\\.ts$": "ts-jest"
+    },
+    "testRegex": "/test/.+\\.spec\\.(js|ts)$",
+    "moduleFileExtensions": [
+      "ts",
+      "js",
+      "json"
+    ],
+    "globals": {
+      "ts-jest": {
+        "tsConfigFile": "test/tsconfig.json"
+      }
+    }
+  },
+  "devDependencies": {
+    "@babel/types": "^7.0.0-beta.40",
+    "@types/babel-core": "^6.25.3",
+    "@types/jest": "^22.2.0",
+    "babel-core": "^6.26.0",
+    "jest": "^22.4.2",
+    "prettier": "1.11.0",
+    "ts-jest": "^22.4.1",
+    "tslint": "^5.9.1",
+    "tslint-config-ktsn": "^2.1.0",
+    "tslint-config-prettier": "^1.9.0",
+    "typescript": "^2.7.2"
+  }
+}
