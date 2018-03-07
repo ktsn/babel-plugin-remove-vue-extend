@@ -2,12 +2,13 @@
   "name": "babel-plugin-remove-vue-extend",
   "version": "0.0.0",
   "author": "katashin",
-  "private": true,
-  "description": "A project template for a Node.js library using TypeScript",
+  "description": "Babel plugin for removing `Vue.extend` from components",
   "keywords": [
-    "template",
-    "TypeScript",
-    "Node.js"
+    "Babel",
+    "Babel plugin",
+    "Vue",
+    "component",
+    "transform"
   ],
   "license": "MIT",
   "main": "lib/index.js",
