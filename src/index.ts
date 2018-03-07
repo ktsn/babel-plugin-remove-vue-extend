@@ -10,12 +10,15 @@ export default function plugin({
     visitor: {
       ExportDefaultDeclaration(path, state) {
         const exported = path.get('declaration')
+        const options = exported.get('arguments.0')
 
         if (
+          // check if the exported expression is Vue component like
           !exported.isCallExpression() ||
           !exported.get('callee').isMemberExpression() ||
           !exported.get('callee.property').isIdentifier({ name: 'extend' }) ||
-          exported.node.arguments.length !== 1
+          exported.node.arguments.length !== 1 ||
+          !options.isObjectExpression()
         ) {
           return
         }
@@ -25,27 +28,28 @@ export default function plugin({
           return
         }
 
-        const name = ctor.node.name
-        const ctorBinding = path.scope.getBinding(name)
+        const ctorBinding = path.scope.getBinding(ctor.node.name)
         if (!ctorBinding) {
           return
         }
 
         const ctorImport = ctorBinding.path.parentPath
-        if (
-          !ctorImport.isImportDeclaration() ||
-          ctorImport.node.source.value !== 'vue'
-        ) {
-          return
-        }
 
-        const options = exported.get('arguments.0')
-        if (!options.isObjectExpression()) {
-          return
+        if (ctorImport.isImportDeclaration()) {
+          // If it is base vue contructor, just remove it
+          // otherwise move it into `extend` option.
+          if (ctorImport.node.source.value === 'vue') {
+            ctorImport.remove()
+          } else {
+            const extendProp = t.objectProperty(
+              t.identifier('extends'),
+              t.identifier(ctor.node.name)
+            )
+            ;(options as any).unshiftContainer('properties', extendProp)
+          }
         }
 
         exported.replaceWith(options)
-        ctorImport.remove()
         path.stop()
       }
     }

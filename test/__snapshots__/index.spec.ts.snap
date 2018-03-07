@@ -1,20 +1,57 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Transform Vue Deextend should not remove other module 1`] = `
+exports[`Remove vue extend should not remove a function 1`] = `
 "
-import Vue from 'some-other-module';
+import extend from './extend';
 
-export default Vue.extend({
+export default extend({
   data() {
     return { message: 'Hello!' };
   }
 });"
 `;
 
-exports[`Transform Vue Deextend should remove Vue.extend 1`] = `
+exports[`Remove vue extend should not remove a non Ctor method 1`] = `
+"
+import Vue from 'vue';
+
+export default Vue.something.extend({
+  data() {
+    return { message: 'Hello!' };
+  }
+});"
+`;
+
+exports[`Remove vue extend should not remove local binding 1`] = `
+"
+const Vue = {
+  extend() {}
+};
+
+export default {
+  data() {
+    return { message: 'Hello!' };
+  }
+};"
+`;
+
+exports[`Remove vue extend should remove Vue.extend 1`] = `
 "
 
 export default {
+  data() {
+    return { message: 'Hello!' };
+  }
+};"
+`;
+
+exports[`Remove vue extend should remove but move into extends option 1`] = `
+"
+import Sub from './Sub.vue';
+
+export default {
+  extends: Sub,
+
   data() {
     return { message: 'Hello!' };
   }
