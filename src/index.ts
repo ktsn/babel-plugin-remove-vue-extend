@@ -47,9 +47,10 @@ export default function plugin({
             )
             ;(options as any).unshiftContainer('properties', extendProp)
           }
+
+          exported.replaceWith(options)
         }
 
-        exported.replaceWith(options)
         path.stop()
       }
     }
