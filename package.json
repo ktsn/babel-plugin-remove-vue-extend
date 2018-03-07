@@ -50,10 +50,10 @@
     }
   },
   "devDependencies": {
+    "@babel/core": "^7.0.0-beta.40",
     "@babel/types": "^7.0.0-beta.40",
     "@types/babel-core": "^6.25.3",
     "@types/jest": "^22.2.0",
-    "babel-core": "^6.26.0",
     "jest": "^22.4.2",
     "prettier": "1.11.0",
     "ts-jest": "^22.4.1",
