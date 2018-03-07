@@ -1,5 +1,5 @@
 {
-  "name": "babel-plugin-transform-vue-deextend",
+  "name": "babel-plugin-remove-vue-extend",
   "version": "0.0.0",
   "author": "katashin",
   "private": true,
@@ -15,11 +15,11 @@
   "files": [
     "lib"
   ],
-  "homepage": "https://github.com/ktsn/babel-plugin-transform-vue-deextend",
-  "bugs": "https://github.com/ktsn/babel-plugin-transform-vue-deextend/issues",
+  "homepage": "https://github.com/ktsn/babel-plugin-remove-vue-extend",
+  "bugs": "https://github.com/ktsn/babel-plugin-remove-vue-extend/issues",
   "repository": {
     "type": "git",
-    "url": "https://github.com/ktsn/babel-plugin-transform-vue-deextend.git"
+    "url": "https://github.com/ktsn/babel-plugin-remove-vue-extend.git"
   },
   "scripts": {
     "prepublishOnly": "npm run clean && npm run test && npm run build",

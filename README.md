@@ -1,4 +1,4 @@
-# babel-plugin-transform-vue-deextend
+# babel-plugin-remove-vue-extend
 
 ## License
 
